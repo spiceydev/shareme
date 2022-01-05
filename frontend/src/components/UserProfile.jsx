@@ -87,11 +87,16 @@ const UserProfile = () => {
                 render={(renderProps) => (
                   <button
                     type="button"
-                    className="p-2 bg-white rounded-full shadow-md outline-none cursor-pointer "
+                    className="flex flex-row items-center p-2 bg-white rounded-full shadow-md outline-none cursor-pointer "
                     onClick={renderProps.onClick}
                     disabled={renderProps.disabled}
                   >
-                    <AiOutlineLogout color="red" fontSize={21} />
+                    <AiOutlineLogout
+                      color="red"
+                      fontSize={21}
+                      className="mr-2"
+                    />{' '}
+                    Logout
                   </button>
                 )}
                 onLogoutSuccess={logout}

@@ -21,7 +21,8 @@ export default {
     {
       name: 'category',
       title: 'Category',
-      type: 'string',
+      type: 'reference',
+      to: [{ type: 'category' }],
     },
     {
       name: 'image',

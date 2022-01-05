@@ -5,8 +5,17 @@ export const client = sanityClient({
   projectId: import.meta.env.VITE_SANITY_PROJECT_ID,
   dataset: 'production',
   apiVersion: '2021-11-16',
+  useCdn: false,
+  ignoreBrowserTokenWarning: true,
+});
+
+export const writeClient = sanityClient({
+  projectId: import.meta.env.VITE_SANITY_PROJECT_ID,
+  dataset: 'production',
+  apiVersion: '2021-11-16',
   useCdn: true,
   token: import.meta.env.VITE_SANITY_TOKEN,
+  ignoreBrowserTokenWarning: true,
 });
 
 const builder = imageUrlBuilder(client);

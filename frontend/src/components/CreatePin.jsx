@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { MdDelete } from 'react-icons/md';
 
 import { categories } from '../utils/data';
-import { client } from '../client';
+import { writeClient } from '../client';
 import Spinner from './Spinner';
 
 const CreatePin = ({ user }) => {
@@ -31,7 +31,7 @@ const CreatePin = ({ user }) => {
     ) {
       setWrongImageType(false);
       setLoading(true);
-      client.assets
+      writeClient.assets
         .upload('image', selectedFile, {
           contentType: selectedFile.type,
           filename: selectedFile.name,
@@ -70,7 +70,7 @@ const CreatePin = ({ user }) => {
         },
         category,
       };
-      client.create(doc).then(() => {
+      writeClient.create(doc).then(() => {
         navigate('/');
       });
     } else {
@@ -88,9 +88,9 @@ const CreatePin = ({ user }) => {
           Please add all fields.
         </p>
       )}
-      <div className="flex flex-col items-center justify-center w-full p-3 bg-white  lg:flex-row lg:p-5 lg:w-4/5">
+      <div className="flex flex-col items-center justify-center w-full p-3 bg-white lg:flex-row lg:p-5 lg:w-4/5">
         <div className="bg-secondaryColor p-3 flex flex-0.7 w-full">
-          <div className="flex flex-col items-center justify-center w-full p-3 border-2 border-gray-300 border-dotted  h-420">
+          <div className="flex flex-col items-center justify-center w-full p-3 border-2 border-gray-300 border-dotted h-420">
             {loading && <Spinner />}
             {wrongImageType && <p>It&apos;s wrong file type.</p>}
             {!imageAsset ? (
@@ -186,6 +186,7 @@ const CreatePin = ({ user }) => {
                   <option
                     className="text-base text-black capitalize bg-white border-0 outline-none "
                     value={item.name}
+                    key={item.name}
                   >
                     {item.name}
                   </option>

@@ -26,7 +26,7 @@ const Feed = () => {
       });
     }
   }, [categoryId]);
-  console.log(`pins`, pins);
+
   if (isLoading)
     return <Spinner message="We are adding new pins to your feed!" />;
   return <div>{pins && <MasonryLayout pins={pins} />}</div>;
